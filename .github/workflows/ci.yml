@@ -79,7 +79,7 @@ jobs:
 
     steps:
     
-      - name: Checkout repository
+      - name: Checkout 
         uses: actions/checkout@v5
     
       - name: Set up Python
@@ -108,7 +108,8 @@ jobs:
 
     # All backend tests must pass before this job starts
     needs:
-      - [backend-test, frontend-test]
+    - backend-test
+    - frontend-test
 
     # Build and push when code is pushed to main or manually triggered
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
